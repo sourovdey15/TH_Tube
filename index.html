@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TH TUBE</title>
+    <!-- DaisyUI and Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <!-- Header Area -->
+    <nav class="w-11/12 flex justify-around items-center py-4">
+        <div>
+            <img src="assest/Logo.png" alt="logo">
+        </div>
+        <div>
+            <button class="btn btn-sm">Short By View</button>
+        </div>
+        <div>
+            <button class="btn btn-sm bg-red-500 text-white">Blog</button>
+        </div>
+    </nav>
+    <hr class="w-11/12 mx-auto">
+    <!-- Main Content Area -->
+    <section class="mainContent">
+        <!-- Filter Buttons Area -->
+        <nav id="dynamicBtns" class="flex justify-center gap-2 py-4">
+            <div>
+                <button onclick="loadVideos()" class="btn btn-sm bg-red-500 text-white ">ALl</button>
+            </div>
+        </nav>
+        <!-- Video Content Area -->
+        <div class="videoContainer grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-4 space-y-4 w-11/12 mx-auto" id="videoContainer">
+            <!-- Videos Area -->
+
+        </div>
+    </section>
+
+
+    <!-- Scripts Links  -->
+    <script src="scripts/index.js"></script>
 </body>
+
 </html>
