@@ -9,7 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-
+<style>
+    .active{
+        background-color:#fb2c36 ;
+        color: white;
+    }
+</style>
 <body>
     <!-- Header Area -->
     <nav class="w-11/12 flex justify-around items-center py-4">
@@ -29,13 +34,13 @@
         <!-- Filter Buttons Area -->
         <nav id="dynamicBtns" class="flex justify-center gap-2 py-4">
             <div>
-                <button onclick="loadVideos()" class="btn btn-sm bg-red-500 text-white ">ALl</button>
+                <button onclick="loadVideos()" class="catBtn active btn btn-sm bg-red-500 text-white ">ALl</button>
             </div>
         </nav>
         <!-- Video Content Area -->
-        <div class="videoContainer grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-4 space-y-4 w-11/12 mx-auto" id="videoContainer">
+        <div class="videoContainer grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-4 space-y-4 w-11/12 mx-auto"
+            id="videoContainer">
             <!-- Videos Area -->
-
         </div>
     </section>
 
