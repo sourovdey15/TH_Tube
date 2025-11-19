@@ -2,7 +2,8 @@
 function removeActiveCls() {
     const allAcative = document.getElementsByClassName('active');
     for(let activeBtn of allAcative){
-        activeBtn.classList
+        console.log(activeBtn);
+        activeBtn.classList.remove('active')
     }
 }
 // Dynamic Buttons 
@@ -40,7 +41,12 @@ loadVideos();
 function loadVideos() {
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
         .then(res => res.json())
-        .then(data => showVides(data.videos));
+        .then(data => {
+            removeActiveCls()
+            const btnAll = document.getElementById('btn_all');
+            btnAll.classList.add('active');
+            showVides(data.videos)
+        });
 }
 function showVides(vData) {
     const videoContainer = document.getElementById('videoContainer')
