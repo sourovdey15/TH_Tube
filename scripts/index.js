@@ -1,8 +1,7 @@
 // Remove ALl Active Class
 function removeActiveCls() {
     const allAcative = document.getElementsByClassName('active');
-    for(let activeBtn of allAcative){
-        console.log(activeBtn);
+    for (let activeBtn of allAcative) {
         activeBtn.classList.remove('active')
     }
 }
@@ -96,6 +95,14 @@ function showVides(vData) {
         videoContainer.appendChild(newVideo);
     });
 };
-// Button Hover Effect 
+// Search Input
+
+
+const searchBox = document.getElementById('searchBox').addEventListener('keyup', function (e) {
+
+    console.log(e.target.value);
+});
+
+
 
 

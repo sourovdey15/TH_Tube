@@ -10,11 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <style>
-    .active{
-        background-color:#fb2c36 ;
+    .active {
+        background-color: #fb2c36;
         color: white;
     }
 </style>
+
 <body>
     <!-- Header Area -->
     <nav class="w-11/12 flex justify-around items-center py-4">
@@ -22,7 +23,17 @@
             <img src="assest/Logo.png" alt="logo">
         </div>
         <div>
-            <button class="btn btn-sm">Short By View</button>
+            <!-- Search Bar -->
+            <label class="input">
+                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                        stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+                <input id="searchBox" type="search" required placeholder="Search" />
+            </label>
         </div>
         <div>
             <button class="btn btn-sm bg-red-500 text-white">Blog</button>
