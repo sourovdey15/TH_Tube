@@ -1,16 +1,17 @@
 // Remove ALl Active Class
 function removeActiveCls() {
     const allAcative = document.getElementsByClassName('active');
+    console.log(allAcative);
     for (let activeBtn of allAcative) {
         activeBtn.classList.remove('active')
-    }
-}
+    };
+};
 // Dynamic Buttons 
 function loadCat() {
     fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
         .then(res => res.json())
         .then(data => dynamicCats(data.categories));
-}
+};
 function dynamicCats(cat) {
     // Get the Dynamic Button Texts
     cat.map(dynamicBtn => {
@@ -19,8 +20,8 @@ function dynamicCats(cat) {
         newDiv.innerHTML =
             `<button id="btn-${dynamicBtn.category_id}" onclick="filterByCat(${dynamicBtn.category_id})" class="btn btn-sm hover:bg-red-500 hover:text-white catBtn">${dynamicBtn.category}</button>`;
         dynamicBtns.appendChild(newDiv);
-    })
-}
+    });
+};
 // Filter By Categories
 function filterByCat(catId) {
     const newUrl = `https://openapi.programming-hero.com/api/phero-tube/category/${catId}`
@@ -31,8 +32,8 @@ function filterByCat(catId) {
             const clickBtn = document.getElementById(`btn-${catId}`);
             clickBtn.classList.add('active');
             showVides(data.category)
-        })
-}
+        });
+};
 // Load functions on screen on
 loadCat();
 loadVideos();
@@ -45,7 +46,7 @@ function loadVideos() {
             const btnAll = document.getElementById('btn_all');
             btnAll.classList.add('active');
             showVides(data.videos)
-        });
+        })
 }
 function showVides(vData) {
     const videoContainer = document.getElementById('videoContainer')
@@ -62,7 +63,7 @@ function showVides(vData) {
         </div>
         </div>
         `
-        return
+        return;
     }
     vData.forEach((vid) => {
         const newVideo = document.createElement('div');
@@ -91,18 +92,63 @@ function showVides(vData) {
                     <h5 class="font-">${vid.others.views}</h5>
                 </div>
             </div>
-        </div>`;
+            <div class="mt-2">
+                <button onClick="getVidDetails('${vid.video_id}')" class="btn btn-block infoBtns">Show Details</button>
+            </div>
+        </div>`
         videoContainer.appendChild(newVideo);
     });
 };
 // Search Input
-
-
 const searchBox = document.getElementById('searchBox').addEventListener('keyup', function (e) {
-
-    console.log(e.target.value);
+    // console.log(e.target.value);
 });
 
+// Get Details Buttons
+
+const getVidDetails = (videoId) => {
+    const detailsUrl = `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`
+
+    fetch(detailsUrl)
+        .then(res => res.json())
+        .then(data => showDetails(data.video));
+
+    my_modal_1.showModal()
+}
+
+// Show Video Details 
+function showDetails(video) {
+    const modalContainer = document.getElementById('modalContainer');
+    modalContainer.innerHTML = `
+        <h2 class="font-bold text-xl mb-1">${video.title}</h2>
+        <div class="flex justify-between space-y-2">
+            <h3><span class="font-semibold">View:-</span> ${video.others.views}</h3>
+            <h4 class="font-semibold text-gray-600 flex gap-2 justify-center items-center">
+                ${video.authors[0].profile_name}
+                <span class="font-bold">
+                    <img src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" class="w-4"/>
+                </span>
+            </h4>
+        </div>
+        <p>${video.description}</p>
+        
+    `
+}
 
 
 
+
+
+
+
+
+
+
+
+
+//  const showInfo = document.getElementsByClassName('infoBtns');
+//     // console.log(showInfo);
+
+//     for(let btn of showInfo){
+//         console.log(btn);
+//     }
